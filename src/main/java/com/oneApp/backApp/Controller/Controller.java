@@ -1,7 +1,9 @@
 package com.oneApp.backApp.Controller;
 
+import com.oneApp.backApp.model.Educacion;
 import com.oneApp.backApp.model.Experiencia;
 import com.oneApp.backApp.model.Proyecto;
+import com.oneApp.backApp.service.IEducacionService;
 import com.oneApp.backApp.service.IExperienciaService;
 import com.oneApp.backApp.service.IProyectoService;
 import java.util.List;
@@ -33,7 +35,7 @@ public class Controller {
     public void borrarProyecto(@PathVariable Long id){
         proyServ.borrarProyecto(id);
     }
-    
+    //Experiencia
     @Autowired
     private IExperienciaService expServ;
     
@@ -50,6 +52,25 @@ public class Controller {
     @DeleteMapping("/delete/exp/{id}")
     public void borrarExperiencia(@PathVariable Long id){
         expServ.borrarExperiencia(id);
+    }
+    
+    //Educacion
+    @Autowired
+    private IEducacionService edServ;
+    
+    @PostMapping("/new/educacion")
+    public void agregarEducacion(@RequestBody Educacion ed){
+        edServ.crearEducacion(ed);
+    }
+    @GetMapping("/ver/educacion")
+    @ResponseBody
+    public List<Educacion> verEducacion(){
+        return edServ.verEducacion();
+    }
+    
+    @DeleteMapping("/delete/educacion/{id}")
+    public void borrarEducacion(@PathVariable Long id){
+        edServ.borrarEducacion(id);
     }
     
 }

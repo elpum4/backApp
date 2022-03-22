@@ -28,7 +28,7 @@ public class ProyectoService implements IProyectoService {
     }
 
     @Override
-    public Proyecto buscararProyecto(Long id) {
+    public Proyecto buscarProyecto(Long id) {
         return proyRepo.findById(id).orElse(null);
     }
     
