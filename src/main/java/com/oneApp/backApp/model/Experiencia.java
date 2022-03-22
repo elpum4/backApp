@@ -12,7 +12,7 @@ import lombok.Setter;
 @Entity
 public class Experiencia {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String exp_titulo;
@@ -37,6 +37,6 @@ public class Experiencia {
         this.exp_actual = exp_actual;
         this.exp_tipo = exp_tipo;
     }
-    
+
     
 }

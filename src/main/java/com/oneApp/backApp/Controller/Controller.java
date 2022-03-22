@@ -3,9 +3,11 @@ package com.oneApp.backApp.Controller;
 import com.oneApp.backApp.model.Educacion;
 import com.oneApp.backApp.model.Experiencia;
 import com.oneApp.backApp.model.Proyecto;
+import com.oneApp.backApp.model.Skill;
 import com.oneApp.backApp.service.IEducacionService;
 import com.oneApp.backApp.service.IExperienciaService;
 import com.oneApp.backApp.service.IProyectoService;
+import com.oneApp.backApp.service.ISkillService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -73,4 +75,22 @@ public class Controller {
         edServ.borrarEducacion(id);
     }
     
+    //Skills
+    @Autowired
+    private ISkillService skServ;
+    
+    @PostMapping("/new/skill")
+    public void agregarSkill(@RequestBody Skill sk){
+        skServ.crearSkill(sk);
+    }
+    @GetMapping("/ver/skills")
+    @ResponseBody
+    public List<Skill> verSkills(){
+        return skServ.verSkills();
+    }
+    
+    @DeleteMapping("/delete/skill/{id}")
+    public void borrarSkill(@PathVariable Long id){
+        skServ.borrarSkill(id);
+    }
 }
