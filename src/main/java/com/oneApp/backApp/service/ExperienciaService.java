@@ -28,7 +28,7 @@ public class ExperienciaService implements IExperienciaService{
     }
 
     @Override
-    public Experiencia buscararExperiencia(Long id) {
+    public Experiencia buscarExperiencia(Long id) {
         return expRepo.findById(id).orElse(null);
     }
     

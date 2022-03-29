@@ -2,10 +2,12 @@ package com.oneApp.backApp.controller;
 
 import com.oneApp.backApp.model.Educacion;
 import com.oneApp.backApp.model.Experiencia;
+import com.oneApp.backApp.model.Header;
 import com.oneApp.backApp.model.Proyecto;
 import com.oneApp.backApp.model.Skill;
 import com.oneApp.backApp.service.IEducacionService;
 import com.oneApp.backApp.service.IExperienciaService;
+import com.oneApp.backApp.service.IHeaderService;
 import com.oneApp.backApp.service.IProyectoService;
 import com.oneApp.backApp.service.ISkillService;
 import java.util.List;
@@ -25,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class Controller {
     @Autowired
     private IProyectoService proyServ;
@@ -109,4 +111,23 @@ public class Controller {
     public void borrarSkill(@PathVariable Long id){
         skServ.borrarSkill(id);
     }
+    
+    //header
+    
+    @Autowired
+    private IHeaderService hdServ;
+    
+    @PostMapping("/new/header")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public void agregarHeader(@RequestBody Header hd){
+        hdServ.crearHeader(hd);
+    }
+    
+    @GetMapping("/ver/header")
+    @ResponseBody
+    public List<Header> verHeader(){
+        return hdServ.verHeader();
+    }
+    
+
 }
