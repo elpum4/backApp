@@ -10,6 +10,4 @@ public class BackAppApplication {
 		SpringApplication.run(BackAppApplication.class, args);
 	}
         
-        public static String PORT = System.getenv("PORT");
-        public static String SERVER_URL = System.getenv("SERVER_URL");
 }
