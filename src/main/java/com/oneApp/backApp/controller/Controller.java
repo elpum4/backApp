@@ -41,7 +41,11 @@ public class Controller {
     @GetMapping("/ver/proyectos")
     @ResponseBody
     public List<Proyecto> verProyectos(){
+        
+        System.out.print(proyServ.verProyectos());
+        
         return proyServ.verProyectos();
+        
     }
     
     @DeleteMapping("/delete/{id}")
