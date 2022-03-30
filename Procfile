@@ -1,1 +1,1 @@
-web java $JAVA_OPTS -cp target/classes:target/dependency/* -Dexec.mainClass=com.oneApp.backApp.BackAppApplication
+web java $JAVA_OPTS -cp target/classes:target/dependency/* com.oneApp.backApp.BackAppApplication
