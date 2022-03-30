@@ -9,14 +9,15 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan
 public class BackAppApplication extends SpringBootServletInitializer {
-        public static String PORT = System.getenv("PORT");
-        public static String SERVER_URL = System.getenv("SERVER_URL");
+        
         public static void main(final  String[] args) {
 		SpringApplication.run(BackAppApplication.class, args);
 	}
         
          @Override
         protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+            
+                
         return application.sources(BackAppApplication.class);
         }
 }
