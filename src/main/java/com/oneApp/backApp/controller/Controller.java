@@ -40,6 +40,8 @@ public class Controller {
     
     @GetMapping("/ver/proyectos")
     @ResponseBody
+    
+    @PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Proyecto> verProyectos(){
         
         System.out.print(proyServ.verProyectos());
@@ -85,6 +87,7 @@ public class Controller {
     }
     @GetMapping("/ver/educacion")
     @ResponseBody
+    @PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Educacion> verEducacion(){
         return edServ.verEducacion();
     }
@@ -106,6 +109,7 @@ public class Controller {
     }
     @GetMapping("/ver/skills")
     @ResponseBody
+    @PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Skill> verSkills(){
         return skServ.verSkills();
     }
@@ -129,6 +133,7 @@ public class Controller {
     
     @GetMapping("/ver/header")
     @ResponseBody
+    @PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Header> verHeader(){
         return hdServ.verHeader();
     }
