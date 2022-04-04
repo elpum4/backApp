@@ -48,6 +48,12 @@ public class Controller {
         return proyServ.verProyectos();
     }
     
+    @GetMapping("/buscar/proyecto/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Proyecto buscarProyecto(@PathVariable Long id){
+        return proyServ.buscarProyecto(id);
+    }
+    
     @DeleteMapping("/delete/proyecto/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void borrarProyecto(@PathVariable Long id){
@@ -66,6 +72,12 @@ public class Controller {
     @ResponseBody
     public List<Experiencia> verExperiencias(){
         return expServ.verExperiencias();
+    }
+    
+    @GetMapping("/buscar/experiencia/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Experiencia buscarExperiencia(@PathVariable Long id){
+        return expServ.buscarExperiencia(id);
     }
     
     @DeleteMapping("/delete/exp/{id}")
@@ -90,6 +102,12 @@ public class Controller {
         return edServ.verEducacion();
     }
     
+    @GetMapping("/buscar/educacion/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Educacion buscarEducacion(@PathVariable Long id){
+        return edServ.buscarEducacion(id);
+    }
+    
     @DeleteMapping("/delete/educacion/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void borrarEducacion(@PathVariable Long id){
@@ -110,6 +128,12 @@ public class Controller {
     //@PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Skill> verSkills(){
         return skServ.verSkills();
+    }
+    
+    @GetMapping("/buscar/skill/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Skill buscarSkill(@PathVariable Long id){
+        return skServ.buscarSkill(id);
     }
     
     @DeleteMapping("/delete/skill/{id}")
