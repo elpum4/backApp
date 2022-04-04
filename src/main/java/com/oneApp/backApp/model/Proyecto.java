@@ -34,6 +34,11 @@ public class Proyecto {
         this.proy_urlimg = proy_urlimg;
         this.proy_categoria = proy_categoria;
     }
+
+    @Override
+    public String toString() {
+        return "Proyecto{" + "id=" + id + ", proy_titulo=" + proy_titulo + ", proy_descripcion=" + proy_descripcion + ", proy_url=" + proy_url + ", proy_cliente=" + proy_cliente + ", proy_urlimg=" + proy_urlimg + ", proy_categoria=" + proy_categoria + '}';
+    }
     
     
 }

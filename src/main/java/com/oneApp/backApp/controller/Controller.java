@@ -11,6 +11,9 @@ import com.oneApp.backApp.service.IHeaderService;
 import com.oneApp.backApp.service.IProyectoService;
 import com.oneApp.backApp.service.ISkillService;
 import java.util.List;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,18 +41,14 @@ public class Controller {
         proyServ.crearProyecto(proy);
     }
     
-    @GetMapping("/ver/proyectos")
+    @GetMapping("/ver/proyecto")
     @ResponseBody
     //@PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Proyecto> verProyectos(){
-        
-        System.out.print(proyServ.verProyectos());
-        
         return proyServ.verProyectos();
-        
     }
     
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/proyecto/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void borrarProyecto(@PathVariable Long id){
         proyServ.borrarProyecto(id);
@@ -63,7 +62,7 @@ public class Controller {
     public void agregarExperiencia(@RequestBody Experiencia exp){
         expServ.crearExperiencia(exp);
     }
-    @GetMapping("/ver/experiencias")
+    @GetMapping("/ver/experiencia")
     @ResponseBody
     public List<Experiencia> verExperiencias(){
         return expServ.verExperiencias();
@@ -106,7 +105,7 @@ public class Controller {
     public void agregarSkill(@RequestBody Skill sk){
         skServ.crearSkill(sk);
     }
-    @GetMapping("/ver/skills")
+    @GetMapping("/ver/skill")
     @ResponseBody
     //@PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Skill> verSkills(){
@@ -136,6 +135,4 @@ public class Controller {
     public List<Header> verHeader(){
         return hdServ.verHeader();
     }
-    
-
 }
