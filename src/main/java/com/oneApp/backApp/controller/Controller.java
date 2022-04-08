@@ -80,7 +80,7 @@ public class Controller {
         return expServ.buscarExperiencia(id);
     }
     
-    @DeleteMapping("/delete/exp/{id}")
+    @DeleteMapping("/delete/experiencia/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void borrarExperiencia(@PathVariable Long id){
         expServ.borrarExperiencia(id);
