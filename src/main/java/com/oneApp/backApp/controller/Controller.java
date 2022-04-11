@@ -50,13 +50,13 @@ public class Controller {
     }
     
     @GetMapping("/buscar/proyecto/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public Proyecto buscarProyecto(@PathVariable Long id){
         return proyServ.buscarProyecto(id);
     }
     
     @DeleteMapping("/delete/proyecto/{id}")
-    //@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void borrarProyecto(@PathVariable Long id){
         proyServ.borrarProyecto(id);
     }
