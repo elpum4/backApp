@@ -160,4 +160,10 @@ public class Controller {
     public List<Header> verHeader(){
         return hdServ.verHeader();
     }
+    
+    @GetMapping("/buscar/header/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Header buscarHeader(@PathVariable Long id){
+        return hdServ.buscarHeader(id);
+    }
 }
