@@ -21,14 +21,14 @@ public class Experiencia {
     private String ex_urllogo;
     private Date exp_comienzo;
     private Date exp_final;
-    private int exp_actual;
+    private Boolean exp_actual;
     private int exp_tipo;
 
 
     public Experiencia() {
     }
 
-    public Experiencia(Long id, String exp_titulo, String exp_descripcion, String exp_sitio, String ex_urllogo, Date exp_comienzo, Date exp_final, int exp_actual, int exp_tipo) {
+    public Experiencia(Long id, String exp_titulo, String exp_descripcion, String exp_sitio, String ex_urllogo, Date exp_comienzo, Date exp_final, Boolean exp_actual, int exp_tipo) {
         this.id = id;
         this.exp_titulo = exp_titulo;
         this.exp_descripcion = exp_descripcion;
@@ -40,6 +40,5 @@ public class Experiencia {
         this.exp_tipo = exp_tipo;
     }
 
-    
     
 }

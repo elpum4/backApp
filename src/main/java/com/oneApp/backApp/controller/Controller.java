@@ -39,6 +39,7 @@ public class Controller {
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void agregarProyecto(@RequestBody Proyecto proy){
         proyServ.crearProyecto(proy);
+        System.out.println("Okas");
     }
     
     @GetMapping("/ver/proyecto")
@@ -80,7 +81,7 @@ public class Controller {
         return expServ.buscarExperiencia(id);
     }
     
-    @DeleteMapping("/delete/exp/{id}")
+    @DeleteMapping("/delete/experiencia/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void borrarExperiencia(@PathVariable Long id){
         expServ.borrarExperiencia(id);
