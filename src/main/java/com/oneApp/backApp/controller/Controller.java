@@ -56,6 +56,7 @@ public class Controller {
     }
     
     @DeleteMapping("/delete/proyecto/{id}")
+    //@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void borrarProyecto(@PathVariable Long id){
         proyServ.borrarProyecto(id);
     }
