@@ -39,6 +39,7 @@ public class Controller {
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void agregarProyecto(@RequestBody Proyecto proy){
         proyServ.crearProyecto(proy);
+        System.out.println("Okas");
     }
     
     @GetMapping("/ver/proyecto")
@@ -49,7 +50,7 @@ public class Controller {
     }
     
     @GetMapping("/buscar/proyecto/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public Proyecto buscarProyecto(@PathVariable Long id){
         return proyServ.buscarProyecto(id);
     }
@@ -158,5 +159,11 @@ public class Controller {
     //@PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public List<Header> verHeader(){
         return hdServ.verHeader();
+    }
+    
+    @GetMapping("/buscar/header/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Header buscarHeader(@PathVariable Long id){
+        return hdServ.buscarHeader(id);
     }
 }

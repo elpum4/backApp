@@ -21,14 +21,14 @@ public class Educacion {
     private String ed_urllogo;
     private Date ed_comienzo;
     private Date ed_final;
-    private int ed_actual;
+    private Boolean ed_actual;
     private int ed_tipo;
 
 
     public Educacion() {
     }
 
-    public Educacion(Long id, String ed_titulo, String ed_descripcion, String ed_institucion, String ed_urllogo, Date ed_comienzo, Date ed_final, int ed_actual, int ed_tipo) {
+    public Educacion(Long id, String ed_titulo, String ed_descripcion, String ed_institucion, String ed_urllogo, Date ed_comienzo, Date ed_final, Boolean ed_actual, int ed_tipo) {
         this.id = id;
         this.ed_titulo = ed_titulo;
         this.ed_descripcion = ed_descripcion;
@@ -40,6 +40,7 @@ public class Educacion {
         this.ed_tipo = ed_tipo;
     }
 
+   
  
 
       
