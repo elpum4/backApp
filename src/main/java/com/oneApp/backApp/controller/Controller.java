@@ -11,8 +11,6 @@ import com.oneApp.backApp.service.IProyectoService;
 import com.oneApp.backApp.service.ISkillService;
 import java.util.List;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;

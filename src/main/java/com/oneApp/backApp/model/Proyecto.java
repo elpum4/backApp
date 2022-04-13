@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
-import com.oneApp.backApp.model.PojectType;
+import com.oneApp.backApp.model.TipoProyecto;
 import javax.persistence.JoinColumn;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,24 +32,36 @@ public class Proyecto {
     private String proy_urlimg;
     @JoinColumn(name = "proy_categoria", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private PojectType project_type;
+    private TipoProyecto proy_type;
 
     public Proyecto() {
     }
 
-    public Proyecto(Long id, String proy_titulo, String proy_descripcion, String proy_url, String proy_cliente, String proy_urlimg, PojectType project_type) {
+    public Proyecto(Long id, String proy_titulo, 
+            String proy_descripcion, 
+            String proy_url, 
+            String proy_cliente, 
+            String proy_urlimg, 
+            TipoProyecto proy_type) 
+    {
         this.id = id;
         this.proy_titulo = proy_titulo;
         this.proy_descripcion = proy_descripcion;
         this.proy_url = proy_url;
         this.proy_cliente = proy_cliente;
         this.proy_urlimg = proy_urlimg;
-        this.project_type = project_type;
+        this.proy_type = proy_type;
     }
 
     @Override
     public String toString() {
-        return "Proyecto{" + "id=" + id + ", proy_titulo=" + proy_titulo + ", proy_descripcion=" + proy_descripcion + ", proy_url=" + proy_url + ", proy_cliente=" + proy_cliente + ", proy_urlimg=" + proy_urlimg + ", project_type=" + project_type + '}';
+        return "Proyecto{" + "id=" + id + ","
+                + " proy_titulo=" + proy_titulo + ","
+                + " proy_descripcion=" + proy_descripcion + ","
+                + " proy_url=" + proy_url + ","
+                + " proy_cliente=" + proy_cliente + ","
+                + " proy_urlimg=" + proy_urlimg + ", "
+                + "proy_type=" + proy_type + '}';
     }
 
    
