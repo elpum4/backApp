@@ -1,29 +1,29 @@
 
 package com.oneApp.backApp.service;
 
-import com.oneApp.backApp.model.Header;
-import com.oneApp.backApp.repository.HeaderRepository;
+import com.oneApp.backApp.model.Profile;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.oneApp.backApp.repository.ProfileRepository;
 
 @Service
-public class HeaderService implements IHeaderService{
+public class ProfileService implements IProfileService{
     @Autowired
-    public HeaderRepository headRepo;
+    public ProfileRepository headRepo;
     
     @Override
-    public List<Header> verHeader() {
+    public List<Profile> verProfile() {
        return headRepo.findAll();
     }
 
     @Override
-    public void crearHeader(Header head) {
+    public void crearProfile(Profile head) {
         headRepo.save(head);
     }
 
     @Override
-    public Header buscarHeader(Long id) {
+    public Profile buscarProfile(Long id) {
         return headRepo.findById(id).orElse(null);
     }
     

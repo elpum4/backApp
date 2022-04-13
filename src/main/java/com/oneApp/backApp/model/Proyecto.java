@@ -1,10 +1,17 @@
 
 package com.oneApp.backApp.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
+
+import com.oneApp.backApp.model.PojectType;
+import javax.persistence.JoinColumn;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,29 +23,38 @@ public class Proyecto {
     private Long id;
     
     private String proy_titulo;
+    @Size(max = 400)
     private String proy_descripcion;
+    @Size(max = 200)
     private String proy_url;
     private String proy_cliente;
+    @Size(max = 200)
     private String proy_urlimg;
-    private String proy_categoria;
+    @JoinColumn(name = "proy_categoria", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private PojectType project_type;
 
     public Proyecto() {
     }
 
-    public Proyecto(Long id, String proy_titulo, String proy_descripcion, String proy_url, String proy_cliente, String proy_urlimg, String proy_categoria) {
+    public Proyecto(Long id, String proy_titulo, String proy_descripcion, String proy_url, String proy_cliente, String proy_urlimg, PojectType project_type) {
         this.id = id;
         this.proy_titulo = proy_titulo;
         this.proy_descripcion = proy_descripcion;
         this.proy_url = proy_url;
         this.proy_cliente = proy_cliente;
         this.proy_urlimg = proy_urlimg;
-        this.proy_categoria = proy_categoria;
+        this.project_type = project_type;
     }
 
     @Override
     public String toString() {
-        return "Proyecto{" + "id=" + id + ", proy_titulo=" + proy_titulo + ", proy_descripcion=" + proy_descripcion + ", proy_url=" + proy_url + ", proy_cliente=" + proy_cliente + ", proy_urlimg=" + proy_urlimg + ", proy_categoria=" + proy_categoria + '}';
+        return "Proyecto{" + "id=" + id + ", proy_titulo=" + proy_titulo + ", proy_descripcion=" + proy_descripcion + ", proy_url=" + proy_url + ", proy_cliente=" + proy_cliente + ", proy_urlimg=" + proy_urlimg + ", project_type=" + project_type + '}';
     }
+
+   
+
+    
     
     
 }

@@ -2,12 +2,11 @@ package com.oneApp.backApp.controller;
 
 import com.oneApp.backApp.model.Educacion;
 import com.oneApp.backApp.model.Experiencia;
-import com.oneApp.backApp.model.Header;
+import com.oneApp.backApp.model.Profile;
 import com.oneApp.backApp.model.Proyecto;
 import com.oneApp.backApp.model.Skill;
 import com.oneApp.backApp.service.IEducacionService;
 import com.oneApp.backApp.service.IExperienciaService;
-import com.oneApp.backApp.service.IHeaderService;
 import com.oneApp.backApp.service.IProyectoService;
 import com.oneApp.backApp.service.ISkillService;
 import java.util.List;
@@ -25,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.oneApp.backApp.service.IProfileService;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -39,7 +39,6 @@ public class Controller {
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void agregarProyecto(@RequestBody Proyecto proy){
         proyServ.crearProyecto(proy);
-        System.out.println("Okas");
     }
     
     @GetMapping("/ver/proyecto")
@@ -146,24 +145,24 @@ public class Controller {
     //header
     
     @Autowired
-    private IHeaderService hdServ;
+    private IProfileService hdServ;
     
-    @PostMapping("/new/header")
+    @PostMapping("/new/profile")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public void agregarHeader(@RequestBody Header hd){
-        hdServ.crearHeader(hd);
+    public void agregarHeader(@RequestBody Profile hd){
+        hdServ.crearProfile(hd);
     }
     
-    @GetMapping("/ver/header")
+    @GetMapping("/ver/profile")
     @ResponseBody
     //@PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public List<Header> verHeader(){
-        return hdServ.verHeader();
+    public List<Profile> verHeader(){
+        return hdServ.verProfile();
     }
     
-    @GetMapping("/buscar/header/{id}")
+    @GetMapping("/buscar/profile/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public Header buscarHeader(@PathVariable Long id){
-        return hdServ.buscarHeader(id);
+    public Profile buscarHeader(@PathVariable Long id){
+        return hdServ.buscarProfile(id);
     }
 }

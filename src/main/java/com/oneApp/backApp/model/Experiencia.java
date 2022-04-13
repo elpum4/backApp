@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +19,13 @@ public class Experiencia {
     private Long id;
     
     private String exp_titulo;
+    @Size(max = 400)
     private String exp_descripcion;
     private String exp_sitio;
     private String ex_urllogo;
+    @Temporal(TemporalType.DATE)
     private Date exp_comienzo;
+    @Temporal(TemporalType.DATE)
     private Date exp_final;
     private Boolean exp_actual;
     private int exp_tipo;

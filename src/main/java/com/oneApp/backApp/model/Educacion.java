@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +19,13 @@ public class Educacion {
     private Long id;
     
     private String ed_titulo;
+    @Size(max = 400)
     private String ed_descripcion;
     private String ed_institucion;
     private String ed_urllogo;
+    @Temporal(TemporalType.DATE)
     private Date ed_comienzo;
+    @Temporal(TemporalType.DATE)
     private Date ed_final;
     private Boolean ed_actual;
     private int ed_tipo;
