@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
-
-import com.oneApp.backApp.model.TipoProyecto;
 import javax.persistence.JoinColumn;
 import lombok.Getter;
 import lombok.Setter;

@@ -28,5 +28,7 @@ public class ProyectoDTO implements Serializable{
         this.proy_urlimg = proy_urlimg;
         this.proy_categoria = proy_categoria;
     }
+
+    
     
 }

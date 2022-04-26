@@ -10,18 +10,17 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 
-public class TipoProyecto {
+public class TipoExperiencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     public String name;
 
-    public TipoProyecto() {
+    public TipoExperiencia() {
     }
 
-    public TipoProyecto(Long id, String name) {
+    public TipoExperiencia(Long id, String name) {
         this.id = id;
         this.name = name;
-    } 
-    
+    }  
 }

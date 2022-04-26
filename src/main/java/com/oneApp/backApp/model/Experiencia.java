@@ -1,10 +1,14 @@
 package com.oneApp.backApp.model;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
@@ -28,13 +32,15 @@ public class Experiencia {
     @Temporal(TemporalType.DATE)
     private Date exp_final;
     private Boolean exp_actual;
-    private int exp_tipo;
+    @JoinColumn(name = "exp_tipo", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private TipoExperiencia exp_tipo;
 
 
     public Experiencia() {
     }
 
-    public Experiencia(Long id, String exp_titulo, String exp_descripcion, String exp_sitio, String ex_urllogo, Date exp_comienzo, Date exp_final, Boolean exp_actual, int exp_tipo) {
+    public Experiencia(Long id, String exp_titulo, String exp_descripcion, String exp_sitio, String ex_urllogo, Date exp_comienzo, Date exp_final, Boolean exp_actual, TipoExperiencia exp_tipo) {
         this.id = id;
         this.exp_titulo = exp_titulo;
         this.exp_descripcion = exp_descripcion;

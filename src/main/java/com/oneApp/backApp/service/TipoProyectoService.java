@@ -4,7 +4,8 @@ import com.oneApp.backApp.model.TipoProyecto;
 import com.oneApp.backApp.repository.TipoProyectoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
+@Service
 public class TipoProyectoService implements ITipoProyectoService{
     @Autowired
     public TipoProyectoRepository tProyRepo;
@@ -27,6 +28,13 @@ public class TipoProyectoService implements ITipoProyectoService{
     @Override
     public TipoProyecto buscarTipoProyecto(Long id) {
         return tProyRepo.findById(id).orElse(null);
-    }   
+    } 
     
+
+
+    @Override
+    public List<TipoProyecto> buscarTPByName(String name) {
+        return tProyRepo.findByName(name);
+    }
+
 }

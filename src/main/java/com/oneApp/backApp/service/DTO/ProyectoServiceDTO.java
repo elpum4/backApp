@@ -1,8 +1,7 @@
-package com.oneApp.backApp.service;
+package com.oneApp.backApp.service.DTO;
 
 import com.oneApp.backApp.DTO.ProyectoDTO;
 import com.oneApp.backApp.model.Proyecto;
-import com.oneApp.backApp.model.TipoProyecto;
 import com.oneApp.backApp.repository.ProyectoRepository;
 import com.oneApp.backApp.repository.TipoProyectoRepository;
 import java.util.ArrayList;
@@ -35,20 +34,6 @@ public class ProyectoServiceDTO implements IProyectoServiceDTO{
            
            proyectosDTO.add(proyectoDTO);
         } return proyectosDTO;
-    }
-
-    @Override
-    public void crearProyectoDTO(ProyectoDTO proy) {
-        Proyecto proyecto = new Proyecto();
-        
-        proyecto.setId(proy.getId());
-        proyecto.setProy_titulo(proy.getProy_titulo());
-        proyecto.setProy_descripcion(proy.getProy_descripcion());
-        proyecto.setProy_url(proy.getProy_url());
-        proyecto.setProy_cliente(proy.getProy_cliente());
-        proyecto.setProy_urlimg(proy.getProy_urlimg());
-        
-        proyecto.setProy_categoria(1);
     }
 
     @Override
