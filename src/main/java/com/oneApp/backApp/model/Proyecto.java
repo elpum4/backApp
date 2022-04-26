@@ -32,7 +32,7 @@ public class Proyecto {
     private String proy_urlimg;
     @JoinColumn(name = "proy_categoria", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private TipoProyecto proy_type;
+    private TipoProyecto proy_categoria;
 
     public Proyecto() {
     }
@@ -42,7 +42,7 @@ public class Proyecto {
             String proy_url, 
             String proy_cliente, 
             String proy_urlimg, 
-            TipoProyecto proy_type) 
+            TipoProyecto proy_categoria) 
     {
         this.id = id;
         this.proy_titulo = proy_titulo;
@@ -50,23 +50,6 @@ public class Proyecto {
         this.proy_url = proy_url;
         this.proy_cliente = proy_cliente;
         this.proy_urlimg = proy_urlimg;
-        this.proy_type = proy_type;
-    }
-
-    @Override
-    public String toString() {
-        return "Proyecto{" + "id=" + id + ","
-                + " proy_titulo=" + proy_titulo + ","
-                + " proy_descripcion=" + proy_descripcion + ","
-                + " proy_url=" + proy_url + ","
-                + " proy_cliente=" + proy_cliente + ","
-                + " proy_urlimg=" + proy_urlimg + ", "
-                + "proy_type=" + proy_type + '}';
-    }
-
-   
-
-    
-    
-    
+        this.proy_categoria = proy_categoria;
+    }  
 }

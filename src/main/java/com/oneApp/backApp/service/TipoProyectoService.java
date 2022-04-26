@@ -27,7 +27,6 @@ public class TipoProyectoService implements ITipoProyectoService{
     @Override
     public TipoProyecto buscarTipoProyecto(Long id) {
         return tProyRepo.findById(id).orElse(null);
-    }
-    
+    }   
     
 }

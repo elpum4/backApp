@@ -1,5 +1,6 @@
 package com.oneApp.backApp.controller;
 
+import com.oneApp.backApp.DTO.ProyectoDTO;
 import com.oneApp.backApp.model.Educacion;
 import com.oneApp.backApp.model.Experiencia;
 import com.oneApp.backApp.model.Profile;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.oneApp.backApp.service.IProfileService;
+import com.oneApp.backApp.service.IProyectoServiceDTO;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -39,24 +41,32 @@ public class Controller {
         proyServ.crearProyecto(proy);
     }
     
-    @GetMapping("/ver/proyecto")
-    @ResponseBody
-    //@PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public List<Proyecto> verProyectos(){
-        return proyServ.verProyectos();
-    }
-    
-    @GetMapping("/buscar/proyecto/{id}")
-    //@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public Proyecto buscarProyecto(@PathVariable Long id){
-        return proyServ.buscarProyecto(id);
-    }
-    
+  
     @DeleteMapping("/delete/proyecto/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void borrarProyecto(@PathVariable Long id){
         proyServ.borrarProyecto(id);
     }
+    
+    //DTO
+    
+     @Autowired
+    private IProyectoServiceDTO proyServDTO;
+    
+    @GetMapping("/ver/proyecto")
+    @ResponseBody
+    //@PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public List<ProyectoDTO> verProyectoDTO(){
+        return proyServDTO.verProyectoDTO();
+    }
+    @GetMapping("/buscar/proyecto/{id}")
+    //@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public ProyectoDTO buscarProyectoDTO(@PathVariable Long id){
+        return proyServDTO.buscarProyectoDTO(id);
+    }
+    
+    
+    
     //Experiencia
     @Autowired
     private IExperienciaService expServ;
