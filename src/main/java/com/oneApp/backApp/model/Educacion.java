@@ -26,6 +26,7 @@ public class Educacion {
     @Size(max = 400)
     private String ed_descripcion;
     private String ed_institucion;
+    @Size(max = 400)
     private String ed_urllogo;
     @Temporal(TemporalType.DATE)
     private Date ed_comienzo;
@@ -33,7 +34,7 @@ public class Educacion {
     private Date ed_final;
     private Boolean ed_actual;
     @JoinColumn(name = "ed_tipo", nullable = false)
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private TipoEducacion ed_tipo;
 
 

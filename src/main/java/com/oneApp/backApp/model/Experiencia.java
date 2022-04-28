@@ -26,6 +26,7 @@ public class Experiencia {
     @Size(max = 400)
     private String exp_descripcion;
     private String exp_sitio;
+    @Size(max = 400)
     private String ex_urllogo;
     @Temporal(TemporalType.DATE)
     private Date exp_comienzo;
@@ -33,7 +34,7 @@ public class Experiencia {
     private Date exp_final;
     private Boolean exp_actual;
     @JoinColumn(name = "exp_tipo", nullable = false)
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private TipoExperiencia exp_tipo;
 
 

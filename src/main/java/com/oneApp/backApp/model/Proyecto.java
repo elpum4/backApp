@@ -23,13 +23,13 @@ public class Proyecto {
     private String proy_titulo;
     @Size(max = 400)
     private String proy_descripcion;
-    @Size(max = 200)
+    @Size(max = 400)
     private String proy_url;
     private String proy_cliente;
-    @Size(max = 200)
+    @Size(max = 400)
     private String proy_urlimg;
     @JoinColumn(name = "proy_categoria", nullable = false)
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private TipoProyecto proy_categoria;
 
     public Proyecto() {
