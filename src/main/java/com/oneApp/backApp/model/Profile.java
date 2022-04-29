@@ -23,14 +23,7 @@ public class Profile {
     private String hd_profesion;
     @Size(max = 2500)
     private String hd_sobremi;
-    //@Email
-    //private String hd_correo;
     
-    //@JoinColumn(name = "user_id", nullable = false)
-    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    //private List<Proyecto> user_proyect;
-
-
     public Profile() {
     }
 
