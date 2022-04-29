@@ -15,20 +15,15 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Size(max = 400)
     private String hd_urlbanner;
+    @Size(max = 400)
     private String hd_urlperfil;
     private String hd_nombre;
     private String hd_profesion;
-    @Size(max = 400)
+    @Size(max = 2500)
     private String hd_sobremi;
-    //@Email
-    //private String hd_correo;
     
-    //@JoinColumn(name = "user_id", nullable = false)
-    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    //private List<Proyecto> user_proyect;
-
-
     public Profile() {
     }
 
