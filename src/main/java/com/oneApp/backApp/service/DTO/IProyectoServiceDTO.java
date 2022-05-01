@@ -6,5 +6,6 @@ import java.util.List;
 public interface IProyectoServiceDTO {
     public List<ProyectoDTO> verProyectoDTO();
     public ProyectoDTO buscarProyectoDTO (Long id);
+    public void agregarProyecto(ProyectoDTO proy);
     
 }
