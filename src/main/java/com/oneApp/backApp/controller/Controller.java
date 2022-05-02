@@ -3,10 +3,7 @@ package com.oneApp.backApp.controller;
 import com.oneApp.backApp.DTO.EducacionDTO;
 import com.oneApp.backApp.DTO.ExperienciaDTO;
 import com.oneApp.backApp.DTO.ProyectoDTO;
-import com.oneApp.backApp.model.Educacion;
-import com.oneApp.backApp.model.Experiencia;
 import com.oneApp.backApp.model.Profile;
-import com.oneApp.backApp.model.Proyecto;
 import com.oneApp.backApp.model.Skill;
 import com.oneApp.backApp.model.TipoEducacion;
 import com.oneApp.backApp.model.TipoExperiencia;
@@ -48,24 +45,12 @@ public class Controller {
     @Autowired
     private IProyectoService proyServ;
     @Autowired
-    private ITipoProyectoService iTProyServ;
-    @Autowired
     private IProyectoServiceDTO proyServDTO;
     
     @PostMapping("/new/proyecto")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void agregarProyecto(@RequestBody ProyectoDTO proy){
-        Proyecto proyecto = new Proyecto();
-        
-        proyecto.setId(proy.getId());
-        proyecto.setProy_titulo(proy.getProy_titulo());
-        proyecto.setProy_descripcion(proy.getProy_descripcion());
-        proyecto.setProy_url(proy.getProy_url());
-        proyecto.setProy_cliente(proy.getProy_cliente());
-        proyecto.setProy_urlimg(proy.getProy_urlimg());
-        proyecto.setProy_categoria(iTProyServ.buscarTPByName(proy.getProy_categoria()).get(0));
-        proyServ.crearProyecto(proyecto);
-
+        proyServDTO.agregarProyecto(proy);
     }
     
   
@@ -93,25 +78,11 @@ public class Controller {
     private IExperienciaService expServ;
     @Autowired
     private IExperienciaServiceDTO expServDTO;
-    @Autowired
-    private ITipoExperienciaService iTExpServ;
     
     @PostMapping("/new/experiencia")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void agregarExperiencia(@RequestBody ExperienciaDTO xp){
-        Experiencia experiencia = new Experiencia();
-        
-        experiencia.setId(xp.getId());
-        experiencia.setExp_titulo(xp.getExp_titulo());
-        experiencia.setExp_descripcion(xp.getExp_descripcion());
-        experiencia.setExp_sitio(xp.getExp_sitio());
-        experiencia.setEx_urllogo(xp.getEx_urllogo());
-        experiencia.setExp_comienzo(xp.getExp_comienzo());
-        experiencia.setExp_final(xp.getExp_final());
-        experiencia.setExp_actual(xp.getExp_actual());
-        experiencia.setExp_tipo(iTExpServ.buscarTXpByName(xp.getExp_tipo()).get(0));
-        
-        expServ.crearExperiencia(experiencia);
+        expServDTO.agregarExperiencia(xp);
     }
     
     
@@ -139,26 +110,13 @@ public class Controller {
     private IEducacionService edServ;
     @Autowired
     private IEducacionServiceDTO edServDTO;
-    @Autowired
-    private ITipoEducacionService iTEdpServ;
     
     @PostMapping("/new/educacion")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void agregarEducacion(@RequestBody EducacionDTO ed){
-        Educacion educacion = new Educacion();
-        
-        educacion.setId(ed.getId());
-        educacion.setEd_titulo(ed.getEd_titulo());
-        educacion.setEd_descripcion(ed.getEd_descripcion());
-        educacion.setEd_institucion(ed.getEd_institucion());
-        educacion.setEd_urllogo(ed.getEd_urllogo());
-        educacion.setEd_comienzo(ed.getEd_comienzo());
-        educacion.setEd_final(ed.getEd_final());
-        educacion.setEd_actual(ed.getEd_actual());
-        educacion.setEd_tipo(iTEdpServ.buscarTEByName(ed.getEd_tipo()).get(0));
-        
-        edServ.crearEducacion(educacion);
+        edServDTO.agregarEducacion(ed);
     }
+    
     @GetMapping("/ver/educacion")
     @ResponseBody
     //@PreAuthorize("hasRole('VIEWER') or hasRole('MODERATOR') or hasRole('ADMIN')")
@@ -233,13 +191,24 @@ public class Controller {
     //**********************************TIPOS************************************************//
     
     //Tipo Proyecto
-   
     @Autowired
     private ITipoProyectoService ITProyServ;
     @GetMapping("/ver/tipoproyecto")
     @ResponseBody
     public List<TipoProyecto> verTipoProyecto(){
         return ITProyServ.verTipoProyecto();
+    }
+    
+    @PostMapping("/new/tipoproyecto")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public void crearTipoProyecto(@RequestBody TipoProyecto tp){
+        ITProyServ.crearTipoProyecto(tp);
+    }
+    
+    @DeleteMapping("/delete/tipoproyecto/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public void borrarTipoProyecto(@PathVariable Long id){
+        ITProyServ.borrarTipoProyecto(id);
     }
     
     //Tipo Experiencia
@@ -252,6 +221,19 @@ public class Controller {
         return ITXpServ.verTipoExperiencia();
     }
     
+    @PostMapping("/new/tipoexperiencia")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public void crearTipoExperiencia(@RequestBody TipoExperiencia te){
+        ITXpServ.crearTipoExperiencia(te);
+    }
+    
+    /*
+    @DeleteMapping("/delete/tipoexperiencia/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public void borrarTipoExperiencia(@PathVariable Long id){
+        ITXpServ.borrarTipoExperiencia(id);
+    }*/
+    
     //Tipo Educacion
    
     @Autowired
@@ -261,4 +243,16 @@ public class Controller {
     public List<TipoEducacion> verTipoEducacion(){
         return ITEdServ.verTipoEducacion();
     }
+    @PostMapping("/new/tipoeducacion")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public void crearTipoEducacion(@RequestBody TipoEducacion ted){
+        ITEdServ.crearTipoEducacion(ted);
+    }
+    
+    /*
+    @DeleteMapping("/delete/tipoexperiencia/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public void borrarTipoEducacion(@PathVariable Long id){
+        ITEdServ.borrarTipoEducacion(id);
+    }*/
 }

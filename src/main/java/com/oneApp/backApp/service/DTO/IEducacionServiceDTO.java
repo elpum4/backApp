@@ -6,6 +6,7 @@ import java.util.List;
 public interface IEducacionServiceDTO {
     public List<EducacionDTO> verEducacionDTO();
     public EducacionDTO buscarEducacionDTO (Long id);
+    public void agregarEducacion(EducacionDTO ed);
     
 }
 
